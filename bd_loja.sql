@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 05/08/2026 às 22:42
+-- Tempo de geração: 19/08/2026 às 22:39
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -24,10 +24,31 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estrutura para tabela `livros`
+--
+
+CREATE TABLE `livros` (
+  `id` int(11) NOT NULL,
+  `titulo` varchar(100) NOT NULL,
+  `autor` varchar(100) NOT NULL,
+  `ano_publicacao` int(11) NOT NULL,
+  `preco` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `livros`
+--
+
+INSERT INTO `livros` (`id`, `titulo`, `autor`, `ano_publicacao`, `preco`) VALUES
+(4, 'É assim que Acaba', 'Collen Hoover', 2010, 50),
+(5, 'É assim que Começa', 'Collen Hoover', 2012, 50),
+(6, 'Testando', 'testando', 10, 50);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura para tabela `produtos`
 --
-CREATE DATABASE loja;
-USE loja;
 
 CREATE TABLE `produtos` (
   `id` int(11) NOT NULL,
@@ -41,13 +62,20 @@ CREATE TABLE `produtos` (
 --
 
 INSERT INTO `produtos` (`id`, `nome`, `preco`, `quantidade`) VALUES
-(1, 'Computador', 3560.85, 5),
+(1, 'teste', 10, 10),
 (2, 'Teclado', 199.9, 15),
 (3, 'Monitor', 5850.9, 8);
 
 --
 -- Índices para tabelas despejadas
 --
+
+--
+-- Índices de tabela `livros`
+--
+ALTER TABLE `livros`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `ix_livros_id` (`id`);
 
 --
 -- Índices de tabela `produtos`
@@ -59,6 +87,12 @@ ALTER TABLE `produtos`
 --
 -- AUTO_INCREMENT para tabelas despejadas
 --
+
+--
+-- AUTO_INCREMENT de tabela `livros`
+--
+ALTER TABLE `livros`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`
